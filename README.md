@@ -2,12 +2,12 @@
 
 This is a simple set of scripts that allow you to create a 'command queues'. You can create a queue and then run a command and on completion of that command you can tell other commands in other terminal sessions to run.
 
-    qcreate my_queue
-    make; qtrigger my-queue
+    qcreate myqueue
+    make; qtrigger myqueue
 
 In another shell:
 
-	qwait my_queue; ./deploy.sh
+	qwait myqueue; ./deploy.sh
 
 Thie `./deploy.sh` command will run once the make command (and thus the `qtrigger` command) from the other shell have completed.
 
