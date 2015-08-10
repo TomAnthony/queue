@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ $# -lt 1 ] ; then
+	echo "No queue name supplied."
+	exit 0
+fi
+
+if [ -p "/tmp/q_$1" ]; then
+	echo > /tmp/q_$1
+else
+	echo "Queue does not exist."
+fi
