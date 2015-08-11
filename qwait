@@ -6,7 +6,9 @@ if [ $# -lt 1 ] ; then
 fi
 
 if [ -p "/tmp/q_$1" ]; then
-	cat /tmp/q_$1
+	:
 else
-	echo "Queue does not exist."
+	mkfifo "/tmp/q_$1"
 fi
+
+cat /tmp/q_$1
