@@ -1,14 +1,4 @@
 #!/bin/sh
 
-if [ $# -lt 1 ] ; then
-	echo "No queue name supplied."
-	exit 0
-fi
-
-if [ -p "/tmp/q_$1" ]; then
-	:
-else
-	mkfifo "/tmp/q_$1"
-fi
-
-cat /tmp/q_$1
+. qset
+read < /tmp/q_$QUEUE
