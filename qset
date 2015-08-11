@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ $# -lt 1 ] ; then
+	QUEUE="default"
+else
+	QUEUE=$1
+fi
+
+if [ ! -p "/tmp/q_$QUEUE" ]; then
+	mkfifo "/tmp/q_$QUEUE"
+fi
