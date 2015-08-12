@@ -1,4 +1,0 @@
-#!/bin/sh
-
-. qset
-echo > /tmp/q_$QUEUE

@@ -4,29 +4,39 @@ Queue is a simple pair of scripts that allows you to delay executing a command i
 
 For example, you may want to run a `make` command in one session and then have two other sessions run commands when make is complete.
 
-Shell one:
+In this example the `run_rests.sh` and `show_logs.sh` in panes 2 & 3 will run after the make command completes in pane 1 (at which point the `q -t` command will run -- the `-t` command sends the 'trigger'):
 
-    make; qtrigger
-
-Shell two:
-
-	qwait; ./run_tests.sh
-
-Shell three:
-
-	qwait; ./show_logs.sh
-
-Thie `./deploy.sh` and `show_logs.sh` commands will run once the `make` command (and thus the `qtrigger` command) has completed.
+```
+.-----------------------------------.-----------------------------------.
+| $ make; q -t                  (1) | $ q; ./run_tests.sh           (2) |
+|                                   |                                   |
+|                                   |                                   |
+|                                   |                                   |
+|                                   |                                   |
+|                                   |                                   |
+|                                   |-----------------------------------|
+|                                   | $ q; ./show_logs.sh           (3) |
+|                                   |                                   |
+|                                   |                                   |
+|                                   |                                   |
+|                                   |                                   |
+|                                   |                                   |
+'-----------------------------------'-----------------------------------'
+```
 
 ## Named Queues
 
 You may also give queues a name, if you want to have more than one queue active at a time:
 
-	make; qtrigger q1
+```bash
+$ make; q -t foo
+```
 
 Elsewhere:
 
-	qwait q1; echo "Finished!"
+```bash
+$ q foo; echo "Finished!"
+```
 
 ## Install
 
@@ -34,6 +44,14 @@ You can install this on OS X via brew:
 
 	brew install TomAnthony/brews/queue
 
-On Linux you can just copy the `qset`, `qtrigger`, and `qwait` files into your PATH.
+On Linux you can just copy the `q` file into your PATH.
 
 I may get round to better installation on other systems at somepoint. Feel free to submit a pull request! :)
+
+## Motivation
+
+I wrote this to work with [iTermocil](https://github.com/TomAnthony/itermocil/) and [teamocil](https://github.com/remiprev/teamocil), where you may want some commands to wait for others as your session is configured.
+
+## To do
+
+- Perhaps add an option that a single `q -t` can trigger multiple queues

@@ -1,4 +1,0 @@
-#!/bin/sh
-
-. qset
-read < /tmp/q_$QUEUE
