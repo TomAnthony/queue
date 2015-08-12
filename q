@@ -1,14 +1,15 @@
 #!/bin/sh
 
-usage() { echo "Usage: $0 [-t] [<queue>]" 1>&2; exit 1; }
+usage() { echo "Usage: $0 [-t] [<queue>]" 1>&2; exit $1; }
 
 TRIGGER=false
 QUEUE="default"
 
-while getopts "t" o; do
+while getopts "th" o; do
     case "${o}" in
         t) TRIGGER=true ;;
-        *) usage ;;
+        h) usage 0;;
+        *) usage 1;;
     esac
 done
 shift $((OPTIND-1))
