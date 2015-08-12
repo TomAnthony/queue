@@ -54,7 +54,7 @@ I wrote this to work with [iTermocil](https://github.com/TomAnthony/itermocil/) 
 
 ## FAQ
 
-Q) What about teh `wait` command?
+Q) What about the `wait` command?
 
 A) I'm aware of `wait` but it requires the PID of the command you want to wait for and so didn't fit my use case (above). It was also more fiddly to use anyway.
 
