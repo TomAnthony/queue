@@ -1,6 +1,6 @@
 ## Intro
 
-Queue is a simple pair of scripts that allows you to delay executing a command in one session until a specific command in another session completes.
+Queue is a simple command that allows you to defer executing a command in one session until a specified command in another session completes.
 
 For example, you may want to run a `make` command in one session and then have two other sessions run commands when make is complete.
 
@@ -51,6 +51,12 @@ I may get round to better installation on other systems at somepoint. Feel free 
 ## Motivation
 
 I wrote this to work with [iTermocil](https://github.com/TomAnthony/itermocil/) and [teamocil](https://github.com/remiprev/teamocil), where you may want some commands to wait for others as your session is configured.
+
+## FAQ
+
+Q) What about teh `wait` command?
+
+A) I'm aware of `wait` but it requires the PID of the command you want to wait for and so didn't fit my use case (above). It was also more fiddly to use anyway.
 
 ## To do
 
